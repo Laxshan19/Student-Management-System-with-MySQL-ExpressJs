@@ -28,6 +28,25 @@ exports.view=(req,res)=>{
      })
 }
 
-exports.read=(req,res)=>{
+exports.adduser=(req,res)=>{
+    res.render("adduser");
+}
 
+exports.save=(req,res)=>{
+    con.getConnection((err,connection)=>{
+        if(err) throw err
+
+        const {name,age,city}=req.body;
+
+     
+        var sql="insert into students (name,age,city) values (?,?,?)";
+        connection.query(sql,[name,age,city],(err,result)=>{
+        connection.release();
+        if(!err){;
+            res.render("adduser");
+        }else{
+            console.log("Error in Listiong"+err);
+        }
+        })
+     })
 }

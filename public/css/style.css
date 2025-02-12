@@ -25,6 +25,7 @@ h1{
 
 table{
     width: 100%;
+    margin: 5px;
     margin-top:20px;
     padding: 10px;
 }
@@ -47,13 +48,11 @@ table tbody tr:nth-child(even){
     background-color: rgb(183, 190, 196);
 }
 
-.edit,.delete{
+.edit,.delete,.addbtn{
     text-decoration: none;
     color: white;
     background-color: red;
-    display: block;
-    width: 50px;
-    padding: 2px;
+    padding: 5px 10px 5px 10px;
     text-align: center;
     border-radius: 3px;
     background-color: blueviolet;
@@ -61,4 +60,34 @@ table tbody tr:nth-child(even){
 
 .delete{
     background-color: red;
+}
+
+.addbtn{
+  background-color: darkslategray;
+}
+
+p{
+    text-align: right;
+    padding: 5px;
+}
+
+.form-group{
+    background:rgb(128, 163, 178);
+    margin-top: 10px;
+    padding:5px;
+    }
+    
+    .form-group label,.form-group input{
+    display: block;
+    }
+
+button{
+    color: white;
+    background-color: rgb(102, 167, 193);
+    padding: 5px 20px 5px 20px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    background-color: blueviolet;
+    font-size: 12px;
 }

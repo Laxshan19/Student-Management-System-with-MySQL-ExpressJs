@@ -18,7 +18,7 @@ app.use(express.static("public"));
 
 //Templete Engine
 const handlebars=exphbs.create({extname:".hbs"});
-app.engine('hbs',handlebars.engine);
+app.engine('hbs',handlebars.engine );
 app.set("view engine","hbs");
 
 /*
