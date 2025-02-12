@@ -8,11 +8,18 @@ router.get("/",studentController.view);
 
 //add new recods
 router.get("/adduser",studentController.adduser);
-router.post("/adduser",studentController.save)
+router.post("/adduser",studentController.save);
+
+//Upadte Records
+router.get("/edituser/:id",studentController.edituser);
+router.post("/edituser/:id",studentController.edit);
+
+//Delete Records
+router.get("/deleteuser/:id",studentController.deleteuser);
 
 
-// router.get('',(req,res)=>{
-//     res.render("home");
-// });
+//router.delete("/deleteuser",studentController.delete);
+//router.delete("/deleteuser",studentController.delete);
+
 
 module.exports=router;

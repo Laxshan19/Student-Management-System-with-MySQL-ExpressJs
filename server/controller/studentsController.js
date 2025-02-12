@@ -18,8 +18,6 @@ exports.view=(req,res)=>{
         connection.query(sql,(err,result)=>{
         connection.release();
         if(!err){
-           // console.log("Fetched Data:", result);
-          //  res.json(result);
             res.render("home",{result});
         }else{
             console.log("Error in Listiong"+err);
@@ -35,18 +33,90 @@ exports.adduser=(req,res)=>{
 exports.save=(req,res)=>{
     con.getConnection((err,connection)=>{
         if(err) throw err
-
         const {name,age,city}=req.body;
-
-     
         var sql="insert into students (name,age,city) values (?,?,?)";
         connection.query(sql,[name,age,city],(err,result)=>{
         connection.release();
         if(!err){;
-            res.render("adduser");
+            res.render("adduser",{msg:"user details added sucessfully!"});
         }else{
             console.log("Error in Listiong"+err);
         }
         })
      })
 }
+
+exports.edituser=(req,res)=>{
+    con.getConnection((err,connection)=>{
+        if(err) throw err
+
+        let id=req.params.id;
+
+        var sql="select * from students where id=?";
+        connection.query(sql,[id],(err,result)=>{
+        connection.release();
+        if(!err){
+            res.render("edituser",{result});
+        }else{
+            console.log("Error in Listiong"+err);
+        }
+        })
+     })
+}
+
+
+exports.edit=(req,res)=>{
+    con.getConnection((err,connection)=>{
+        if(err) throw err
+
+        const {name,age,city}=req.body;
+        let id=req.params.id;
+     
+        var sql = "UPDATE students SET name=?, age=?, city=? WHERE id=?";
+        connection.query(sql,[name,age,city,id],(err,result)=>{
+        connection.release();
+        if(!err){
+                con.getConnection((err,connection)=>{
+                    if(err) throw err
+            
+                    let id=req.params.id;
+            
+                    var sql="select * from students where id=?";
+                    connection.query(sql,[id],(err,result)=>{
+                    connection.release();
+                    if(!err){
+                        res.render("edituser",{result,msg:"user details updated sucessfully!"});
+                    }else{
+                        console.log("Error in Listiong"+err);
+                    }
+                    })
+                })
+        }else{
+            console.log("Error in Listiong"+err);
+        }
+        })
+     })
+}
+
+exports.deleteuser=(req,res)=>{
+    con.getConnection((err,connection)=>{
+        if(err) throw err
+
+        let id=req.params.id;
+
+        var sql="DELETE FROM students WHERE id=?";
+        connection.query(sql,[id],(err)=>{
+        connection.release();
+        if(!err){
+          res.redirect("/");
+        }else{
+            console.log("Error in Listiong"+err);
+        }
+        })
+     })
+}
+
+
+
+
+

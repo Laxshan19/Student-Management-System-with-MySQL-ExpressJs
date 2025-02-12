@@ -13,23 +13,14 @@
         </tr>
     </thead>
     <tbody>
-        {{!-- <tr>
-            <td>1</td>
-            <td>Lax</td>
-            <td>25</td>
-            <td>Jaffna</td>
-            <td ><a href="" class="edit">Edit</a></td>
-            <td ><a href="" class="delete">Delete</a></td>
-        </tr> --}}
-
         {{#each result}}
            <tr>
             <td>{{this.id}}</td>
             <td>{{this.name}}</td>
             <td>{{this.age}}</td>
             <td>{{this.city}}</td>
-            <td ><a href="" class="edit">Edit</a></td>
-            <td ><a href="" class="delete">Delete</a></td>
+            <td ><a   href="/edituser/{{this.id}}" class="edit" >Edit</a></td>
+            <td >  <a href="/deleteuser/{{this.id}}" class="delete" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a></td>
            </tr>
         {{/each}}
 
