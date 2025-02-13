@@ -11,6 +11,7 @@ const con=mysql.createPool({
 });
 
 
+//view all
 exports.view=(req,res)=>{
     con.getConnection((err,connection)=>{
         if(err) throw err
@@ -26,10 +27,12 @@ exports.view=(req,res)=>{
      })
 }
 
+//render the reg page
 exports.adduser=(req,res)=>{
     res.render("adduser");
 }
 
+//insert
 exports.save=(req,res)=>{
     con.getConnection((err,connection)=>{
         if(err) throw err
@@ -46,6 +49,7 @@ exports.save=(req,res)=>{
      })
 }
 
+//edit
 exports.edituser=(req,res)=>{
     con.getConnection((err,connection)=>{
         if(err) throw err
@@ -64,7 +68,7 @@ exports.edituser=(req,res)=>{
      })
 }
 
-
+//update
 exports.edit=(req,res)=>{
     con.getConnection((err,connection)=>{
         if(err) throw err
@@ -98,6 +102,7 @@ exports.edit=(req,res)=>{
      })
 }
 
+//delete
 exports.deleteuser=(req,res)=>{
     con.getConnection((err,connection)=>{
         if(err) throw err
